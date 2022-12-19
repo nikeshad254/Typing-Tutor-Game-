@@ -3,7 +3,8 @@ let gameStatus = {
     rightCount  : 0,
     wrongCount  : 0,
     select      : "top",
-    typeIndex   : 0
+    typeIndex   : 0,
+    timeMin     : 3
 }
 
 const topKey=['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']'];
@@ -85,37 +86,45 @@ input.addEventListener("input", (e)=>{
 
 });
 
-var mins=1;
-var secs=mins*20;
+
+// timer  events 
+
+var mins;
+var secs;
 
 function count() {
-    setTimeout('decrease()',60);
+    mins= gameStatus.timeMin;
+    secs=mins*60;
+    setTimeout(decrease(),60);
 }
+
 function decrease() {
-    if(document.getElementById) {
-        minutes=document.getElementById("minutes");
-        seconds=document.getElementById("seconds");
-        if(seconds<59) {
-            seconds.value=secs;
-        }
-        else {
-            minutes.textContent=getminutes();
-            seconds.textContent=getseconds();
-        }
-        if(mins<1) {
-            minutes.style.color="red";
-            seconds.style.color="red";
-        }
-        if(mins<0) {
-            alert('time up');
-            minutes.value=0;
-            seconds.value=0;
-        }
-        else {
-            secs--;
-            setTimeout('decrease()',1000);
-        }
+    
+    minutes=document.getElementById("minutes");
+    seconds=document.getElementById("seconds");
+    if(seconds<59) {
+        seconds.value=secs;
     }
+    else {
+        minutes.textContent=getminutes();
+        seconds.textContent=getseconds();
+    }
+    if(mins<1) {
+        minutes.style.color="red";
+        seconds.style.color="red";
+    }
+    if(mins<0) {
+        // alert('time up');
+        displayKeys=[];
+        display.innerHTML = "Game over!!!";
+        minutes.textContent=00;
+        seconds.textContent=00;
+    }
+    else {
+        secs--;
+        setTimeout('decrease()',1000);
+    }
+    
 }
      
 function getminutes() {
