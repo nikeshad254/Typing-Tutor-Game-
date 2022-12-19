@@ -32,6 +32,8 @@ window.addEventListener("keydown", (e)=>{
         }
         displayNew();
         count();
+        input.disabled = false;
+        input.focus();
     }
 });
 
