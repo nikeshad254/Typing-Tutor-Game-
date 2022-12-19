@@ -66,6 +66,13 @@ body{
     text-transform: uppercase;
     letter-spacing: 20px;
 }
+#display{
+    display: flex;
+    
+}
+#display p{
+    margin: 0px 20px;
+}
 /* timer and counter */
 .timer-counter{
     margin: 0;

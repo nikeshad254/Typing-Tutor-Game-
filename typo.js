@@ -2,7 +2,8 @@ let gameStatus = {
     startGame   : false,
     rightCount  : 0,
     wrongCount  : 0,
-    select      : "home"
+    select      : "top",
+    typeIndex   : 0
 }
 
 const topKey=['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']'];
@@ -12,6 +13,8 @@ let displayKeys = [];
 
 let display = document.getElementById("display");
 let input = document.getElementById("input");
+//generated ones
+let displayItems = document.getElementsByClassName("displayItems");
 
 
 window.addEventListener("keydown", (e)=>{
@@ -33,10 +36,43 @@ function genRandom(){
 }
 
 function displayNew(){
-    display.textContent = "";
+    gameStatus.typeIndex = 0;
+    display.innerHTML = "";
     let str = "";
     displayKeys.forEach(element => {
-        str += `${element} `;
+        str += `<p class="displayItems">${element}</p>`;
     });
-    display.textContent = str;
+    display.innerHTML = str;
+    highlight();
 }
+
+function highlight(){
+    displayItems[gameStatus.typeIndex].style.color = "var(--pure-green)";
+
+    for(let i=0; i<gameStatus.typeIndex; i++){
+        displayItems[i].style.color = "var(--dark-green)";
+    }
+}
+
+input.addEventListener("input", (e)=>{
+    //console.log(e.data);
+    //console.log(displayItems[gameStatus.typeIndex].textContent);
+    if(gameStatus.typeIndex >= displayItems.length-1){
+        displayKeys = [];
+        for(let i=0; i<10; i++){
+            genRandom();
+        }
+        displayNew();
+        return;
+    }
+
+    if(e.data === displayItems[gameStatus.typeIndex].textContent){
+        gameStatus.typeIndex += 1;
+        highlight();
+        gameStatus.rightCount += 1;
+    }
+    else if(e.data !== displayItems[gameStatus.typeIndex].textContent){
+        gameStatus.wrongCount += 1;
+    }
+
+});
