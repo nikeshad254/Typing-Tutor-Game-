@@ -17,6 +17,9 @@ let input = document.getElementById("input");
 //generated ones
 let displayItems = document.getElementsByClassName("displayItems");
 
+(()=>{
+    document.getElementById("minutes").textContent = gameStatus.timeMin;
+})();
 
 window.addEventListener("keydown", (e)=>{
     if(!gameStatus.startGame){
@@ -110,6 +113,7 @@ function decrease() {
         seconds.textContent=getseconds();
     }
     if(mins<1) {
+        document.getElementById("timer").classList.add("timer");
         minutes.style.color="red";
         seconds.style.color="red";
     }
