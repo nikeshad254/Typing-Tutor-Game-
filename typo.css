@@ -117,6 +117,61 @@ body{
 }
 /* keyboard field */
 .keyboard-field{
-    border: 1px solid var(--light-tan);
-    height: 300px;
+    position: relative;
+    transform: scale(0.7);
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(30, 40px);
+    grid-template-rows: repeat(5, 70px);
+    grid-gap: 10px;
+    border-radius: 10px;
 }
+.key{
+    color: var(--light-tan);
+    padding-top: 17px;
+    grid-column: span 2;
+    text-align: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 1px solid var(--dark-green);
+    border-radius: 5px;
+}
+.key:focus {
+    outline: none;
+  }
+  .key.delete {
+    grid-column: span 4;
+  }
+  .key.tab {
+    grid-column: span 3;
+  }
+  .key.backslash {
+    grid-column: span 3;
+  }
+  .key.capslock {
+    grid-column: span 4;
+  }
+  .key.return {
+    grid-column: span 4;
+  }
+  .key.leftshift {
+    grid-column: span 5;
+  }
+  .key.rightshift {
+    grid-column: span 5;
+  }
+  .key.leftctrl {
+    grid-column: span 3;
+  }
+  .key.command {
+    grid-column: span 2;
+  }
+  .key.ctrl-r {
+    grid-column: span 3;
+  }
+  .key.gr {
+    grid-column: span 3;
+  }
+  .key.space {
+    grid-column: span 13;
+  }
