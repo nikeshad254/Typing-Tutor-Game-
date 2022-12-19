@@ -22,7 +22,7 @@ let displayItems = document.getElementsByClassName("displayItems");
 })();
 
 window.addEventListener("keydown", (e)=>{
-    if(!gameStatus.startGame){
+    if(e.keyCode==13 && !gameStatus.startGame){
         console.log("i am no");
         gameStatus.startGame = true;
         gameStatus.rightCount = 0;
@@ -84,9 +84,13 @@ input.addEventListener("input", (e)=>{
         gameStatus.typeIndex += 1;
         highlight();
         gameStatus.rightCount += 1;
+        let right=document.getElementById('right');
+        right.textContent=gameStatus.rightCount;
     }
     else if(e.data !== displayItems[gameStatus.typeIndex].textContent){
         gameStatus.wrongCount += 1;
+        let wrong=document.getElementById('wrong');
+        wrong.textContent=gameStatus.wrongCount;
     }
 
 });
