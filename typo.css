@@ -117,7 +117,8 @@ body{
 }
 /* keyboard field */
 .keyboard-field{
-    position: relative;
+    position: absolute;
+    bottom: 0;
     transform: scale(0.7);
     padding: 20px;
     display: grid;
