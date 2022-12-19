@@ -52,10 +52,17 @@ function highlight(){
     for(let i=0; i<gameStatus.typeIndex; i++){
         displayItems[i].style.color = "var(--dark-green)";
     }
+
+    let index = topKey.indexOf(displayItems[gameStatus.typeIndex].textContent);
+    let keyboard = document.getElementsByClassName("top");
+    for(let i=0; i<keyboard.length; i++){
+        keyboard[i].style.border = "1px solid var(--dark-green)";
+    }
+    keyboard[index].style.border = "3px solid var(--pure-green)";
 }
 
 input.addEventListener("input", (e)=>{
-    //console.log(e.data);
+    // console.log(e);
     //console.log(displayItems[gameStatus.typeIndex].textContent);
     if(gameStatus.typeIndex >= displayItems.length-1){
         displayKeys = [];
