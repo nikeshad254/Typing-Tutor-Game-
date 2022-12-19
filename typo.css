@@ -6,7 +6,9 @@
     --lightest-teal: #57ada2;
     --dark-tan: #8b7d3f;
     --light-tan: #d7c161;
-    --dark-red: #ac0606;
+    --dark-red: #c71111;
+    --pure-red: #ff0000;
+    --pure-green: #00ff62;
     --dark-green: #319457;
 }
 
@@ -21,7 +23,7 @@
     width: 1000px;
     /* border: 1px solid red; */
     height: 20px;
-    margin: 30px 0px;
+    margin: 20px 0px;
 }
 
 body{
@@ -64,10 +66,41 @@ body{
     text-transform: uppercase;
     letter-spacing: 20px;
 }
-
+/* timer and counter */
+.timer-counter{
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    color: var(--light-tan);
+    justify-content: space-between;
+}
+.timer-counter p{
+    font-weight: bold;
+}
+.timer-counter p span{
+    margin-left: 20px;
+}
+.timer-counter .timer span{
+    animation-name: blinker;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+}
+.timer-counter .right-count span{
+    color: var(--pure-green);
+}
+.timer-counter .wrong-count span{
+    color: var(--pure-red);
+}
+@keyframes blinker{
+    from{opacity: 1;}
+    to{opacity: 0;}
+}
 /* input field */
 .input-field{
     color: var(--light-tan);
+    background: none;
+    border: none;
+    border-bottom: 1px dotted var(--light-tan);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,19 +108,12 @@ body{
     font-size: 1.5rem;
     letter-spacing: 3px;
     text-transform: uppercase;
+    caret-color: var(--lightest-teal);
+    padding: 0px 20px;
+    letter-spacing: 10px;
 }
-.input-field i{
-    width: 2px;
-    height:60%;
-    background: var(--light-tan);
-    margin-left: 10px;
-    animation-name: blink;
-    animation-duration: 1000ms;
-    animation-iteration-count: infinite;
-}
-@keyframes blink {
-    from { opacity: 1; }
-    to { opacity: 0; }
+.input-field:focus{
+    outline: none;
 }
 /* keyboard field */
 .keyboard-field{
