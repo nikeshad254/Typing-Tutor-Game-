@@ -101,8 +101,12 @@ function highlight(){
 
     
 }
+
+let invalidKeys = [8, 32, 38, 40, 39, 37];
 input.addEventListener("keydown", (e)=>{
-    if(e.keyCode == 8 || e.keyCode == 32){
+    let code = invalidKeys.indexOf(e.keyCode);
+    // console.log(code);
+    if(code != -1){
         e.preventDefault();
         let wrong=document.getElementById('wrong');
         gameStatus.wrongCount += 1;
