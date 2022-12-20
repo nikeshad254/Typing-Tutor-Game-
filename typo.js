@@ -180,6 +180,10 @@ function decrease() {
         input.value = "";
         minutes.textContent=00;
         seconds.textContent=00;
+        let keys = document.getElementsByClassName("key");
+        for(let i=0; i<keys.length; i++){
+            keys[i].style.border = "1px solid var(--dark-green)";
+        }
         
         let arr = [`${gameStatus.rightCount}`, `${gameStatus.wrongCount}`];
         localStorage.setItem(Date.now(), JSON.stringify(arr));
@@ -187,6 +191,7 @@ function decrease() {
         document.getElementById("right").textContent = 00;
         document.getElementById("wrong").textContent = 00;
         showTable();
+
     }
     else {
         secs--;
