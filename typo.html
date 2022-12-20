@@ -9,7 +9,7 @@
 </head>
 <body>
     <nav class="nav-container">
-        <h3>Typoooz</h3>
+        <h3>Typoooz <img onclick="showTable()" id="statement" src="statement.png" alt="statement"></h3>
         <select name="keyspace" id="keyspace">
             <option value="top">Top</option>
             <option value="home" selected>Home</option>
@@ -95,6 +95,27 @@
         <div class="key gr col" >Alt Gr</div>
         <div class="key command"><i class="fas fa-file-alt"></i></div>
         <div class="key ctrl-r">Ctrl</div>
+    </div>
+
+    <div class="statement-screen">
+        <!-- add table here -->
+        <h3>Score Table</h3>
+        <div id="cross" onclick="closeTable()">X</div>
+        <table>
+            <thead>
+                <th>S.N.</th>
+                <th>Right Score</th>
+                <th>Wrong Score</th>
+            </thead>
+
+            <tbody id="tbody">
+                <tr>
+                    <td>1</td>
+                    <td>200</td>
+                    <td>200</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <script src="typo.js"></script>

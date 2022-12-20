@@ -4,7 +4,8 @@ let gameStatus = {
     wrongCount  : 0,
     select      : "top",
     typeIndex   : 0,
-    timeMin     : 3
+    timeMin     : 1,
+    tableOpen   : false
 }
 
 const topKey=['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']'];
@@ -22,7 +23,7 @@ let displayItems = document.getElementsByClassName("displayItems");
 })();
 
 window.addEventListener("keydown", (e)=>{
-    if(e.keyCode==13 && !gameStatus.startGame){
+    if(e.keyCode==13 && !gameStatus.startGame && !gameStatus.tableOpen){
         gameStatus.select = document.getElementById("keyspace").value;
         // console.log(e);
         gameStatus.startGame = true;
@@ -136,7 +137,7 @@ var secs;
 
 function count() {
     mins= gameStatus.timeMin;
-    secs=mins*60;
+    secs=mins*5;
     setTimeout(decrease(),60);
 }
 
@@ -161,8 +162,16 @@ function decrease() {
         displayKeys=[];
         display.innerHTML = "Game over!!!";
         input.disabled = true;
+        input.value = "";
         minutes.textContent=00;
         seconds.textContent=00;
+        
+        let arr = [`${gameStatus.rightCount}`, `${gameStatus.wrongCount}`];
+        localStorage.setItem(Date.now(), JSON.stringify(arr));
+
+        document.getElementById("right").textContent = 00;
+        document.getElementById("wrong").textContent = 00;
+        showTable();
     }
     else {
         secs--;
@@ -178,4 +187,31 @@ function getminutes() {
      
 function getseconds() {
     return secs-Math.round(mins*60);
+}
+
+let cross = document.getElementById("cross");
+let table = document.querySelector(".statement-screen");
+
+function showTable(){
+    table.style.display = "flex";
+    gameStatus.tableOpen = true;
+
+    let inHtml = "";
+    for(let i=0; i<localStorage.length; i++){
+        let numArr = JSON.parse(localStorage.getItem(localStorage.key(i)));
+        inHtml = `
+            <tr>
+                <td>${i+1}</td>
+                <td>${numArr[0]}</td>
+                <td>${numArr[1]}</td>
+            </tr>
+        `;
+    }
+    document.getElementById("tbody").innerHTML = inHtml;
+}
+function closeTable(){
+    table.style.display = "none";
+    gameStatus.tableOpen = false;
+    gameStatus.startGame = false;
+    display.textContent = "Press Enter to Start";
 }
