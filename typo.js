@@ -159,6 +159,9 @@ function decrease() {
     else {
         minutes.textContent=getminutes();
         seconds.textContent=getseconds();
+        minutes.style.color="#d7c161";
+        seconds.style.color="#d7c161";
+        document.getElementById("timer").classList.remove("timer");
     }
     if(mins<1) {
         document.getElementById("timer").classList.add("timer");
