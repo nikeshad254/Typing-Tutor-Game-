@@ -102,7 +102,7 @@ function highlight(){
 }
 
 input.addEventListener("input", (e)=>{
-    // console.log(e);
+    console.log(e);
     //console.log(displayItems[gameStatus.typeIndex].textContent);
     if(gameStatus.typeIndex >= displayItems.length-1){
         displayKeys = [];
@@ -160,6 +160,7 @@ function decrease() {
         // alert('time up');
         displayKeys=[];
         display.innerHTML = "Game over!!!";
+        input.disabled = true;
         minutes.textContent=00;
         seconds.textContent=00;
     }
