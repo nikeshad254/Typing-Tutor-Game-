@@ -121,15 +121,15 @@ input.addEventListener("input", (e)=>{
         displayNew();
         return;
     }
-
-    if(e.data === displayItems[gameStatus.typeIndex].textContent){
+    let data = e.data.toLowerCase() ;
+    if(data === displayItems[gameStatus.typeIndex].textContent){
         gameStatus.typeIndex += 1;
         highlight();
         gameStatus.rightCount += 1;
         let right=document.getElementById('right');
         right.textContent=gameStatus.rightCount;
     }
-    else if(e.data !== displayItems[gameStatus.typeIndex].textContent){
+    else if(data !== displayItems[gameStatus.typeIndex].textContent){
         gameStatus.wrongCount += 1;
         let wrong=document.getElementById('wrong');
         wrong.textContent=gameStatus.wrongCount;
