@@ -23,7 +23,8 @@ let displayItems = document.getElementsByClassName("displayItems");
 
 window.addEventListener("keydown", (e)=>{
     if(e.keyCode==13 && !gameStatus.startGame){
-        console.log("i am no");
+        gameStatus.select = document.getElementById("keyspace").value;
+        // console.log(e);
         gameStatus.startGame = true;
         gameStatus.rightCount = 0;
         gameStatus.wrongCount = 0;
@@ -38,8 +39,22 @@ window.addEventListener("keydown", (e)=>{
 });
 
 function genRandom(){
-    let key = Math.floor(Math.random() * topKey.length);
-    displayKeys.push(topKey[key]);
+    let key = "";
+    switch(gameStatus.select){
+        case "home":
+            key = Math.floor(Math.random() * homeKey.length);
+            displayKeys.push(homeKey[key]);
+        break;
+        case "top":
+            key = Math.floor(Math.random() * topKey.length);
+            displayKeys.push(topKey[key]);
+        break;
+        case "bottom":
+            key = Math.floor(Math.random() * bottomKey.length);
+            displayKeys.push(bottomKey[key]);
+        break;
+    }
+    
 }
 
 function displayNew(){
@@ -59,13 +74,31 @@ function highlight(){
     for(let i=0; i<gameStatus.typeIndex; i++){
         displayItems[i].style.color = "var(--dark-green)";
     }
+    let index;
+    let keyboard;
+    switch(gameStatus.select){
+        case "top":
+            index = topKey.indexOf(displayItems[gameStatus.typeIndex].textContent);
+            keyboard = document.getElementsByClassName("top");
+        break;
 
-    let index = topKey.indexOf(displayItems[gameStatus.typeIndex].textContent);
-    let keyboard = document.getElementsByClassName("top");
+        case "home":
+            index = homeKey.indexOf(displayItems[gameStatus.typeIndex].textContent);
+            keyboard = document.getElementsByClassName("home");
+        break;
+
+        case "bottom":
+            index = bottomKey.indexOf(displayItems[gameStatus.typeIndex].textContent);
+            keyboard = document.getElementsByClassName("bottom");
+        break;
+        
+    }
     for(let i=0; i<keyboard.length; i++){
         keyboard[i].style.border = "1px solid var(--dark-green)";
     }
     keyboard[index].style.border = "3px solid var(--pure-green)";
+
+    
 }
 
 input.addEventListener("input", (e)=>{
