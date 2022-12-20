@@ -4,7 +4,7 @@ let gameStatus = {
     wrongCount  : 0,
     select      : "top",
     typeIndex   : 0,
-    timeMin     : 1,
+    timeMin     : 3,
     tableOpen   : false
 }
 
@@ -101,6 +101,14 @@ function highlight(){
 
     
 }
+input.addEventListener("keydown", (e)=>{
+    if(e.keyCode == 8 || e.keyCode == 32){
+        e.preventDefault();
+        let wrong=document.getElementById('wrong');
+        gameStatus.wrongCount += 1;
+        wrong.textContent=gameStatus.wrongCount;
+    }
+})
 
 input.addEventListener("input", (e)=>{
     console.log(e);
@@ -137,7 +145,7 @@ var secs;
 
 function count() {
     mins= gameStatus.timeMin;
-    secs=mins*5;
+    secs=mins*60;
     setTimeout(decrease(),60);
 }
 
@@ -199,7 +207,7 @@ function showTable(){
     let inHtml = "";
     for(let i=0; i<localStorage.length; i++){
         let numArr = JSON.parse(localStorage.getItem(localStorage.key(i)));
-        inHtml = `
+        inHtml += `
             <tr>
                 <td>${i+1}</td>
                 <td>${numArr[0]}</td>
@@ -209,9 +217,15 @@ function showTable(){
     }
     document.getElementById("tbody").innerHTML = inHtml;
 }
+
 function closeTable(){
     table.style.display = "none";
     gameStatus.tableOpen = false;
     gameStatus.startGame = false;
     display.textContent = "Press Enter to Start";
+}
+
+function resetTable(){
+    localStorage.clear();
+    showTable();
 }

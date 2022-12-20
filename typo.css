@@ -236,7 +236,8 @@ body{
 #cross{
   font-size: 2rem;
   font-weight: bold;
-  color: var(--dark-red);
+  color: var(--light-tan);
+  background: var(--dark-red);
   padding: 0px 10px;
   border: 1px solid var(--dark-red);
   border-radius: 10px;
@@ -244,4 +245,22 @@ body{
   top: 20px;
   right: 20px;
   cursor: pointer;
+
+}
+#cross:hover, #reset:hover{
+  background: var(--pure-red);
+  color: var(--pure-green);
+}
+#reset{
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 5px 10px;
+  border: 1px solid var(--dark-red);
+  color: var(--light-tan);
+  background: var(--dark-red);
+  border-radius: 10px;
 }
