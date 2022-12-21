@@ -179,8 +179,11 @@ function decrease() {
         display.innerHTML = "Game over!!!";
         input.disabled = true;
         input.value = "";
-        minutes.textContent=00;
+        minutes.textContent=1;
         seconds.textContent=00;
+        minutes.style.color="#d7c161";
+        seconds.style.color="#d7c161";
+        document.getElementById("timer").classList.remove("timer");
         let keys = document.getElementsByClassName("key");
         for(let i=0; i<keys.length; i++){
             keys[i].style.border = "1px solid var(--dark-green)";
