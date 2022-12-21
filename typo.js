@@ -5,7 +5,8 @@ let gameStatus = {
     select      : "top",
     typeIndex   : 0,
     timeMin     : 1,
-    tableOpen   : false
+    tableOpen   : true,
+    playerName  : ""
 }
 
 const topKey=['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']'];
@@ -15,12 +16,12 @@ let displayKeys = [];
 
 let display = document.getElementById("display");
 let input = document.getElementById("input");
+let getName = document.getElementById("getName");
 //generated ones
 let displayItems = document.getElementsByClassName("displayItems");
 
-(()=>{
-    document.getElementById("minutes").textContent = gameStatus.timeMin;
-})();
+document.getElementById("minutes").textContent = gameStatus.timeMin;
+getName.focus();
 
 window.addEventListener("keydown", (e)=>{
     if(e.keyCode==13 && !gameStatus.startGame && !gameStatus.tableOpen){
@@ -185,8 +186,9 @@ function decrease() {
             keys[i].style.border = "1px solid var(--dark-green)";
         }
         
-        let arr = [`${gameStatus.rightCount}`, `${gameStatus.wrongCount}`];
+        let arr = [`${gameStatus.playerName}`,`${gameStatus.rightCount}`, `${gameStatus.wrongCount}`];
         localStorage.setItem(Date.now(), JSON.stringify(arr));
+        gameStatus.playerName = "";
 
         document.getElementById("right").textContent = 00;
         document.getElementById("wrong").textContent = 00;
@@ -239,9 +241,9 @@ function showTable(){
         let numArr = JSON.parse(localStorage.getItem(keyArr[i]));
         inHtml += `
             <tr>
-                <td>${i+1}</td>
                 <td>${numArr[0]}</td>
                 <td>${numArr[1]}</td>
+                <td>${numArr[2]}</td>
             </tr>
         `;
     }
@@ -250,12 +252,29 @@ function showTable(){
 
 function closeTable(){
     table.style.display = "none";
-    gameStatus.tableOpen = false;
     gameStatus.startGame = false;
     display.textContent = "Press Enter to Start";
+    document.querySelector(".take-name").style.display = "flex";
+    getName.focus();
 }
 
-function resetTable(){
-    localStorage.clear();
-    showTable();
+
+// get name
+function getNameFunc(){
+    if(getName.value.length>0){
+        let name = getName.value.toUpperCase();
+        gameStatus.playerName = name;
+        getName.value = "";
+        document.getElementById("pName").textContent = gameStatus.playerName;
+        setTimeout(()=>{
+            gameStatus.tableOpen = false;  
+        }, 1000)
+        document.querySelector(".take-name").style.display = "none";
+    }
 }
+getName.addEventListener("keypress", (e)=>{
+    if(e.keyCode == 13){
+        getNameFunc();
+        console.log("hello");
+    }
+})

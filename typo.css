@@ -205,14 +205,18 @@ body{
   left: 0;
   min-height: 100vh;
   min-width: 100vw;
-  background: var(--light-teal);
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
   align-items: center; 
-  color: var(--light-tan);
+  color: #fff;
   display: none;
-  transition: height 3s linear 1s;
+
+  background: rgba( 255, 255, 255, 0.1 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 2.5px );
+  -webkit-backdrop-filter: blur( 2.5px );
+  border-radius: 10px;
 }
 
 .statement-screen h3{
@@ -223,6 +227,12 @@ body{
 .statement-screen table{
   border-spacing: 0;
   border: 1px solid var(--dark-green);
+
+  background: rgba(0, 0, 0, 0.553);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 3.5px );
+  -webkit-backdrop-filter: blur( 3.5px );
+  border-radius: 10px;
 }
 
 .statement-screen table th,
@@ -263,4 +273,57 @@ body{
   color: var(--light-tan);
   background: var(--dark-red);
   border-radius: 10px;
+}
+/* take name layout */
+.take-name{
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba( 255, 255, 255, 0.1 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 2.5px );
+  -webkit-backdrop-filter: blur( 2.5px );
+  border-radius: 10px;
+}
+.take-name h3{
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+.take-name input{
+  color: var(--light-tan);
+  width: 500px;
+  padding: 5px 20px;
+  font-size: 1.3rem;
+  outline: none;
+  border: none;
+  background: none;
+  border-bottom: 2px solid var(--light-tan);
+  border-radius: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.take-name button{
+  margin-top: 20px;
+  padding: 5px 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 0.5px solid #fff;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 2.5px );
+  -webkit-backdrop-filter: blur( 2.5px );
+  border-radius: 10px;
+  cursor: pointer;
 }

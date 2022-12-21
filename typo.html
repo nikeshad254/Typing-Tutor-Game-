@@ -11,12 +11,19 @@
 <body>
     <nav class="nav-container">
         <h3>Typoooz <img onclick="showTable()" id="statement" src="statement.png" alt="statement"></h3>
+        <p>Player Name: <span id="pName"></span></p>
         <select name="keyspace" id="keyspace">
             <option value="top">Top</option>
             <option value="home" selected>Home</option>
             <option value="bottom">Bottom</option>
         </select>
     </nav>
+
+    <div class="take-name">
+        <h3>Type Your Name: </h3>
+        <input type="text" name="getName" id="getName">
+        <button onclick="getNameFunc()">Start Game</button>
+    </div>
 
     <div class="wrapper display-field">
         <p id="display">Press enter</p>
@@ -104,7 +111,7 @@
         <div id="cross" onclick="closeTable()">X</div>
         <table>
             <thead>
-                <th>S.N.</th>
+                <th>Name</th>
                 <th>Right Score</th>
                 <th>Wrong Score</th>
             </thead>
@@ -117,7 +124,7 @@
                 </tr>
             </tbody>
         </table>
-        <div id="reset" onclick="resetTable()">reset</div>
+       
     </div>
 
     <script src="typo.js"></script>
