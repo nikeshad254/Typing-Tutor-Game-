@@ -29,6 +29,7 @@ getName.focus();
 window.addEventListener("keydown", (e)=>{
     if(e.keyCode==13 && !gameStatus.startGame && !gameStatus.tableOpen){
         gameStatus.select = document.getElementById("keyspace").value;
+        document.getElementById("keyspace").disabled = true;
         // console.log(e);
         gameStatus.startGame = true;
         gameStatus.rightCount = 0;
@@ -183,6 +184,7 @@ function decrease() {
     //stop game
     if(mins<0) {
         // alert('time up');
+        gameStatus.startGame = false;
         displayKeys=[];
         display.innerHTML = "Game over!!!";
         input.disabled = true;
@@ -243,6 +245,9 @@ function sortLocalKeys(){
 }
 
 function showTable(){
+    if(gameStatus.startGame){
+        return;
+    }
     table.style.display = "flex";
     gameStatus.tableOpen = true;
 
@@ -281,6 +286,7 @@ function getNameFunc(){
             gameStatus.tableOpen = false;  
         }, 1000)
         document.querySelector(".take-name").style.display = "none";
+        document.getElementById("keyspace").disabled = false;
     }
 }
 getName.addEventListener("keypress", (e)=>{
