@@ -190,6 +190,8 @@ body{
   justify-content: center;
   align-items: center;
 }
+
+/* result statement starts here */
 #statement{
   height: 25px;
   color: red;

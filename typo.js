@@ -1,3 +1,4 @@
+// game status 
 let gameStatus = {
     startGame   : false,
     rightCount  : 0,
@@ -9,6 +10,7 @@ let gameStatus = {
     playerName  : ""
 }
 
+//defining keys and holders
 const topKey=['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']'];
 const homeKey=['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'];
 const bottomKey=['z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'];
@@ -16,13 +18,14 @@ let displayKeys = [];
 
 let display = document.getElementById("display");
 let input = document.getElementById("input");
-let getName = document.getElementById("getName");
+let getName = document.getElementById("getName");   //player's name display place
 //generated ones
 let displayItems = document.getElementsByClassName("displayItems");
 
 document.getElementById("minutes").textContent = gameStatus.timeMin;
 getName.focus();
 
+//this is for starting game and intializing it
 window.addEventListener("keydown", (e)=>{
     if(e.keyCode==13 && !gameStatus.startGame && !gameStatus.tableOpen){
         gameStatus.select = document.getElementById("keyspace").value;
@@ -40,6 +43,7 @@ window.addEventListener("keydown", (e)=>{
     }
 });
 
+//generate ramdom keys from top, bottom and home
 function genRandom(){
     let key = "";
     switch(gameStatus.select){
@@ -59,6 +63,7 @@ function genRandom(){
     
 }
 
+//display generated keys
 function displayNew(){
     gameStatus.typeIndex = 0;
     display.innerHTML = "";
@@ -70,6 +75,7 @@ function displayNew(){
     highlight();
 }
 
+//hightlights keyboard 
 function highlight(){
     displayItems[gameStatus.typeIndex].style.color = "var(--pure-green)";
 
@@ -103,6 +109,7 @@ function highlight(){
     
 }
 
+//stops typing or any action on input for specific keys like backspace and space
 let invalidKeys = [8, 32, 38, 40, 39, 37];
 input.addEventListener("keydown", (e)=>{
     let code = invalidKeys.indexOf(e.keyCode);
@@ -115,6 +122,7 @@ input.addEventListener("keydown", (e)=>{
     }
 })
 
+//for every input check correct or not and update score
 input.addEventListener("input", (e)=>{
     //console.log(e);
     //console.log(displayItems[gameStatus.typeIndex].textContent);
@@ -143,8 +151,7 @@ input.addEventListener("input", (e)=>{
 });
 
 
-// timer  events 
-
+// all timer events starts from here
 var mins;
 var secs;
 
@@ -173,6 +180,7 @@ function decrease() {
         minutes.style.color="red";
         seconds.style.color="red";
     }
+    //stop game
     if(mins<0) {
         // alert('time up');
         displayKeys=[];
@@ -211,7 +219,7 @@ function getseconds() {
     return secs-Math.round(mins*60);
 }
 
-let cross = document.getElementById("cross");
+//display result table
 let table = document.querySelector(".statement-screen");
 
 function sortLocalKeys(){
@@ -259,7 +267,7 @@ function closeTable(){
 }
 
 
-// get name
+// get name and display player name
 function getNameFunc(){
     if(getName.value.length>0){
         let name = getName.value.toUpperCase();
