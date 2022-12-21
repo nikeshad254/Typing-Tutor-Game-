@@ -115,7 +115,7 @@ input.addEventListener("keydown", (e)=>{
 })
 
 input.addEventListener("input", (e)=>{
-    console.log(e);
+    //console.log(e);
     //console.log(displayItems[gameStatus.typeIndex].textContent);
     if(gameStatus.typeIndex >= displayItems.length-1){
         displayKeys = [];
@@ -212,13 +212,31 @@ function getseconds() {
 let cross = document.getElementById("cross");
 let table = document.querySelector(".statement-screen");
 
+function sortLocalKeys(){
+    let keyArr = [];
+    for(let i =0; i<localStorage.length; i++){
+        keyArr.push(Number.parseInt(localStorage.key(i)));
+    }
+    for(let i =0; i<localStorage.length; i++){
+        for(let j=i+1; j<localStorage.length; j++){
+            if(keyArr[i]>keyArr[j]){
+                let temp = keyArr[i];
+                keyArr[i] = keyArr[j];
+                keyArr[j] = temp;
+            }
+        }
+    }
+    return keyArr;
+}
+
 function showTable(){
     table.style.display = "flex";
     gameStatus.tableOpen = true;
 
     let inHtml = "";
+    let keyArr = sortLocalKeys();
     for(let i=0; i<localStorage.length; i++){
-        let numArr = JSON.parse(localStorage.getItem(localStorage.key(i)));
+        let numArr = JSON.parse(localStorage.getItem(keyArr[i]));
         inHtml += `
             <tr>
                 <td>${i+1}</td>
