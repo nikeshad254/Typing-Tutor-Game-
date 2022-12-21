@@ -167,7 +167,7 @@ function decrease() {
         seconds.style.color="#d7c161";
         document.getElementById("timer").classList.remove("timer");
     }
-    if(mins<1) {
+    if(secs<20) {
         document.getElementById("timer").classList.add("timer");
         minutes.style.color="red";
         seconds.style.color="red";
