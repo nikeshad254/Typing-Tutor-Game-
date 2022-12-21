@@ -4,7 +4,7 @@ let gameStatus = {
     wrongCount  : 0,
     select      : "top",
     typeIndex   : 0,
-    timeMin     : 3,
+    timeMin     : 1,
     tableOpen   : false
 }
 
