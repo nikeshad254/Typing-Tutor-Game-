@@ -192,6 +192,7 @@ function decrease() {
     if(mins<0) {
         // alert('time up');
         looseAudio.play();
+        countdownAudio.pause();
         gameStatus.startGame = false;
         displayKeys=[];
         display.innerHTML = "Game over!!!";
