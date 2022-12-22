@@ -7,7 +7,8 @@ let gameStatus = {
     typeIndex   : 0,
     timeMin     : 1,
     tableOpen   : true,
-    playerName  : ""
+    playerName  : "",
+    bgAudio     : true
 }
 
 //defining keys and holders
@@ -19,6 +20,8 @@ let displayKeys = [];
 //var game audios
 var countdownAudio = new Audio("10-9-8 one.mp3");
 var looseAudio = new Audio("loosegame.mp3");
+var bgAudio = new Audio("bgAudio.mp3");
+
 
 let display = document.getElementById("display");
 let input = document.getElementById("input");
@@ -187,6 +190,9 @@ function decrease() {
     }
     if(secs<12){
         countdownAudio.play();
+        if(gameStatus.bgAudio){
+            bgAudio.pause();
+        }
     }
     //stop game
     if(mins<0) {
@@ -257,6 +263,9 @@ function showTable(){
     if(gameStatus.startGame){
         return;
     }
+    if(gameStatus.bgAudio){
+        bgAudio.pause();
+    }
     table.style.display = "flex";
     gameStatus.tableOpen = true;
 
@@ -296,6 +305,10 @@ function getNameFunc(){
         }, 1000)
         document.querySelector(".take-name").style.display = "none";
         document.getElementById("keyspace").disabled = false;
+        if(gameStatus.bgAudio){
+            bgAudio.play();
+            bgAudio.loop = true;
+        }
     }
 }
 getName.addEventListener("keypress", (e)=>{
