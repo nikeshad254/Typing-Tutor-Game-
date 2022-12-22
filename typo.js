@@ -16,6 +16,10 @@ const homeKey=['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'];
 const bottomKey=['z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'];
 let displayKeys = [];
 
+//var game audios
+var countdownAudio = new Audio("10-9-8 one.mp3");
+var looseAudio = new Audio("loosegame.mp3");
+
 let display = document.getElementById("display");
 let input = document.getElementById("input");
 let getName = document.getElementById("getName");   //player's name display place
@@ -181,9 +185,13 @@ function decrease() {
         minutes.style.color="red";
         seconds.style.color="red";
     }
+    if(secs<12){
+        countdownAudio.play();
+    }
     //stop game
     if(mins<0) {
         // alert('time up');
+        looseAudio.play();
         gameStatus.startGame = false;
         displayKeys=[];
         display.innerHTML = "Game over!!!";
