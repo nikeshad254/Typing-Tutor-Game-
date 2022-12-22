@@ -40,6 +40,7 @@ body{
     padding: 20px 30px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     color: var(--light-tan);
     font-size: 1.3rem;
 }
@@ -227,6 +228,7 @@ body{
 .statement-screen h3{
   font-size: 2.7rem;
   margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .statement-screen table{
@@ -332,4 +334,36 @@ body{
   -webkit-backdrop-filter: blur( 2.5px );
   border-radius: 10px;
   cursor: pointer;
+}
+
+/* for small screen */
+@media(max-width: 1400px) {
+  .nav-container{
+    font-size: 1.1rem;
+    padding: 10px 30px;
+  }
+  .nav-container h3{
+    font-size: 1.2rem;
+  }
+  .display-field{
+    font-size: 1.2rem;
+    height: 50px;
+  }
+  .timer-counter p{
+    font-size: 1.1rem;
+    margin-top: 0px;
+  }
+  .input-field{
+    font-size: 1.3rem;
+    margin: 0;
+  }
+  .keyboard-field{
+    bottom: -30px;
+  }
+  .statement-screen h3{
+    font-size: 1.7rem;
+  }
+  .statement-screen table{
+    font-size: 1.1rem;
+  }
 }
