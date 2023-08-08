@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typooooz</title>
+    <link rel="stylesheet" href="typo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- top navigation -->
+    <nav class="nav-container">
+        <h3>Typoooz <img onclick="showTable()" id="statement" src="statement.png" alt="statement"></h3>
+        <p>Player Name: <span id="pName"></span></p>
+        <select name="keyspace" id="keyspace">
+            <option value="top">Top</option>
+            <option value="home" selected>Home</option>
+            <option value="bottom">Bottom</option>
+        </select>
+    </nav>
+
+    <!-- take name of player -->
+    <div class="take-name">
+        <h3>Type Your Name: </h3>
+        <input type="text" name="getName" id="getName">
+        <button onclick="getNameFunc()">Start Game</button>
+    </div>
+
+    <!-- top display field -->
+    <div class="wrapper display-field">
+        <p id="display">Press enter</p>
+    </div>
+
+    <!-- timers and right wrong counters -->
+    <div class="wrapper timer-counter">
+        <p id="timer" class="">Time: <span id="minutes">3</span><span>:</span><span id="seconds">00</span></p>
+        <p class="right-count">Right: <span id="right"></span></p>
+        <p class="wrong-count">Wrong: <span id="wrong"></span></p>
+    </div>
+
+    <!-- input field -->
+    <input class="wrapper input-field" type="text" id="input" value="" disabled>
+
+    <!-- bottom keyboard -->
+    <div class="keyboard-field">
+        <div class="key num">~</div>
+        <div class="key num">1</div>
+        <div class="key num">2</div>
+        <div class="key num">3</div>
+        <div class="key num">4</div>
+        <div class="key num">5</div>
+        <div class="key num">6</div>
+        <div class="key num">7</div>
+        <div class="key num">8</div>
+        <div class="key num">9</div>
+        <div class="key num">0</div>
+        <div class="key num">-</div>
+        <div class="key num">+</div>
+        <div class="key delete">Delete</div>
+
+        <div class="key tab">Tab</div>
+        <div class="key top">Q</div>
+        <div class="key col top" >W</div>
+        <div class="key top">E</div>
+        <label for="red"  class="key top">R</label>
+        <div class="key top">T</div>
+        <label for="yellow"  class="key top">Y</label>
+        <div class="key top">U</div>
+        <div class="key top">I</div>
+        <div class="key top">O</div>
+        <div class="key top">P</div>
+        <div class="key top">[</div>
+        <div class="key top">]</div>
+        <div class="key backslash top">\</div>
+
+        <div class="key capslock">CapsLock</div>
+        <div class="key col home" >A</div>
+        <div class="key col home" >S</div>
+        <div class="key col home">D</div>
+        <div class="key home">F</div>
+        <label for="green"  class="key home">G</label>
+        <div class="key home">H</div>
+        <div class="key home">J</div>
+        <div class="key home">K</div>
+        <div class="key home">L</div>
+        <div class="key home">;</div>
+        <div class="key home">'</div>
+        <div class="key return">Enter</div>
+
+        <div class="key leftshift">Shift</div>
+        <div class="key bottom">Z</div>
+        <div class="key bottom">X</div>
+        <div class="key bottom">C</div>
+        <div class="key bottom">V</div>
+        <div class="key bottom">B</div>
+        <div class="key bottom">N</div>
+        <div class="key bottom">M</div>
+        <div class="key bottom">,</div>
+        <div class="key bottom">.</div>
+        <div class="key bottom">/</div>
+        <div class="key rightshift">Shift</div>
+
+        <div class="key leftctrl">Ctrl</div>
+        <div class="key command"><i class="fab fa-windows"></i></div>
+        <div class="key fn">Fn</div>
+        <div class="key">Alt</div>
+        <div class="key space col" >Space</div>
+        <div class="key gr col" >Alt Gr</div>
+        <div class="key command"><i class="fas fa-file-alt"></i></div>
+        <div class="key ctrl-r">Ctrl</div>
+    </div>
+
+    <!-- game over table status -->
+    <div class="statement-screen">
+        <!-- add table here -->
+        <h3>Score Table</h3>
+        <div id="cross" onclick="closeTable()">X</div>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Right Score</th>
+                <th>Wrong Score</th>
+            </thead>
+
+            <tbody id="tbody">
+                <tr>
+                    <td>1</td>
+                    <td>200</td>
+                    <td>200</td>
+                </tr>
+            </tbody>
+        </table>
+       
+    </div>
+
+    <script src="typo.js"></script>
+</body>
+</html>
